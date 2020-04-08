@@ -49,7 +49,7 @@ public class Load : MonoBehaviour
     }
     public static List<node> Loading()
     {
-        string path = "C:/Users/22167/Desktop/Personal Project/Assets/script" + "/map_data";
+        string path = "C:/Users/22167/Desktop/unity project/tank/project/Personal Project/Assets/script" + "/map_data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

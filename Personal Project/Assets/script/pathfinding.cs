@@ -28,15 +28,16 @@ public class pathfinding : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("Target").transform;
         newnode = new node(new Vector3Int(0, 1, 0), true, "grass");
-        FinDAPath(player.position, target.position);
+        
 
         
     }
 
     void Update()
     {
+        FinDAPath(player.position, target.position);
         //Test = load.GetStartNode(PlayerMapPosition);
-       
+
 
         //for (int i = 0; i < Path.Count - 1; i++)
         //{
@@ -63,28 +64,29 @@ public class pathfinding : MonoBehaviour
             for (int i = 1; i <openset.Count; i++)
             {
                 
-                if (openset[i].Fcost < currentNode.Fcost || openset[i].Fcost == currentNode.Fcost)
+                if (openset[i].Fcost < currentNode.Fcost )
                 {
-                    if( openset[i].Hcost < currentNode.Hcost)
-                    {
+                    //if( openset[i].Hcost < currentNode.Hcost)
+                    //{
                         currentNode = openset[i];
-                    }
+                    //}
                         
                     
 
                 }
             }
             
-            openset.Remove(currentNode);
             
-            Closed.Add(currentNode);
             
             if (currentNode == EndNode)
             {
                 retracePath(StartNode, EndNode);
                 return;
             }
-            foreach(node neighbour in load.NeighbourNodes(currentNode))
+            openset.Remove(currentNode);
+
+            Closed.Add(currentNode);
+            foreach (node neighbour in load.NeighbourNodes(currentNode))
             {
                 
                 if (!neighbour.walkable || Closed.Contains(neighbour))
@@ -93,19 +95,16 @@ public class pathfinding : MonoBehaviour
                 }
                 int MovementcostToNewNeighbour = currentNode.Gcost + GetDistance(currentNode, neighbour);
                 
-                if (MovementcostToNewNeighbour < neighbour.Gcost || !openset.Contains(neighbour))
+                if (MovementcostToNewNeighbour < neighbour.Gcost && !Closed.Contains(neighbour))
                 {
                     neighbour.Gcost = MovementcostToNewNeighbour;
                     neighbour.Hcost = GetDistance(neighbour, EndNode);
                     neighbour.parent = currentNode;
                     
-                    if (!openset.Contains(neighbour))
+                    if (!Closed.Contains(neighbour))
                     {
                         openset.Add(neighbour);
-                        //Test = neighbour;
-                        //Debug.Log(neighbour.position[0]+""+neighbour.position[1]+""+neighbour.position[2]);
-                        //testlist.Add(Test);
-                        //openset.Add(newnode);
+                        
                     }
                         
                     

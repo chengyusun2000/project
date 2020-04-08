@@ -78,7 +78,7 @@ public class GetnodeData : MonoBehaviour
     public static void Save( List<node> list)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = "C:/Users/22167/Desktop/Personal Project/Assets/script"+"/map_data";
+        string path = "C:/Users/22167/Desktop/unity project/tank/project/Personal Project/Assets/script" + "/map_data";
         FileStream stream = new FileStream(path, FileMode.Create);
         formatter.Serialize(stream, list);
         stream.Close();
@@ -86,7 +86,7 @@ public class GetnodeData : MonoBehaviour
     }
     public static void Load(List<node> list)
     {
-        string path = "C:/Users/22167/Desktop/Personal Project/Assets/script" + "/map_data";
+        string path = "C:/Users/22167/Desktop/unity project/tank/project/Personal Project/Assets/script" + "/map_data";
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
