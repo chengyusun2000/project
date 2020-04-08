@@ -153,6 +153,7 @@ public class Load : MonoBehaviour
                 {
                     NeighboursList.Add(new node(vector, true, "grass"));
                 }
+                
                 Debug.Log("even left up");
             }// even left up node
             if ( OriginNode.position[1] + 1 <= sizeOfMap)
@@ -170,7 +171,7 @@ public class Load : MonoBehaviour
                 }
                 Debug.Log("even right up");
             }//even right up node
-            if (OriginNode.position[0] - 1 >= sizeOfMap)
+            if (OriginNode.position[0] - 1 >= 0)
             {
                 vector = new Vector3Int(OriginNode.position[0] - 1, OriginNode.position[1], OriginNode.position[2]);
                 if (tilemap.GetTile(vector) == tiles[0])
@@ -265,7 +266,7 @@ public class Load : MonoBehaviour
                 }
                 Debug.Log("odd right up");
             }//odd right up node
-            if (OriginNode.position[0] - 1 >= sizeOfMap)
+            if (OriginNode.position[0] - 1 >= 0)
             {
                 vector = new Vector3Int(OriginNode.position[0] - 1, OriginNode.position[1], OriginNode.position[2]);
                 if (tilemap.GetTile(vector) == tiles[0])

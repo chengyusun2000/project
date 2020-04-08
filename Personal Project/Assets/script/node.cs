@@ -8,7 +8,7 @@ public class node
     public bool walkable;
     public string type;
     public node parent;
-    public int Gcost;
+    public int Gcost=int.MaxValue;
     public int Hcost;
     public node(Vector3Int _position, bool _walkable,string _type)
     {

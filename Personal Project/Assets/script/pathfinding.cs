@@ -6,18 +6,22 @@ using Unity.Collections;
 public class pathfinding : MonoBehaviour
 {
     public Load load;
-    public List<node> PathTest;
+    
     public Transform player;
 
     public Transform target;
+
+    public List<node> Path;
 
     public node Test;
     public node newnode;
     public int testnumber;
     public List<node> testlist;
     public List<node> openset;
-    
+    public List<node> PathTest;
     public List<node> Closed;
+
+    public bool end = false;
     //List<node> openset = new List<node>();
     //HashSet<node> Closed = new HashSet<node>();
 
@@ -28,14 +32,14 @@ public class pathfinding : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("Target").transform;
         newnode = new node(new Vector3Int(0, 1, 0), true, "grass");
-        
 
-        
+        FinDAPath(player.position, target.position);
+
     }
 
     void Update()
     {
-        FinDAPath(player.position, target.position);
+        
         //Test = load.GetStartNode(PlayerMapPosition);
 
 
@@ -51,25 +55,28 @@ public class pathfinding : MonoBehaviour
     {
         node StartNode = load.GetStartNode(StartPoint);
         
+        
         node EndNode = load.GetEndNode(EndPoint);
+        StartNode.Gcost = 0;
+        StartNode.Hcost = GetDistance(StartNode, EndNode);
         openset = new List<node>();
          Closed = new List<node>();
         
         openset.Add(StartNode);
         
-        while (openset.Count >0)
+        while (openset.Count >0/*&&!end*/)
         {
             node currentNode = openset[0];
-            
+           
             for (int i = 1; i <openset.Count; i++)
             {
-                
+               
                 if (openset[i].Fcost < currentNode.Fcost )
                 {
-                    //if( openset[i].Hcost < currentNode.Hcost)
-                    //{
+                    
                         currentNode = openset[i];
-                    //}
+                    
+                    
                         
                     
 
@@ -78,54 +85,87 @@ public class pathfinding : MonoBehaviour
             
             
             
-            if (currentNode == EndNode)
+            if ((currentNode.position[0] == EndNode.position[0])&& currentNode.position[1] == EndNode.position[1]&& currentNode.position[2] == EndNode.position[2])
             {
-                retracePath(StartNode, EndNode);
-                return;
+                //node PathFindNode = currentNode;
+                //while(!(currentNode.position[0] == StartNode.position[0]) || !(currentNode.position[1] == StartNode.position[1]))
+                //{
+                //    PathTest.Add(currentNode);
+                //    currentNode = currentNode.parent;
+
+                //}
+                //PathTest.Reverse();
+                retracePath(StartNode, currentNode);
+
+                Debug.Log("final node" + currentNode.position[0] + " " + currentNode.position[1] + " " + currentNode.position[2] + currentNode.Gcost+"PARENT"+currentNode.parent.position[0]+"" + currentNode.parent.position[1] + ""  + currentNode.parent.position[2] + "" + currentNode.parent.Gcost);
+                Debug.Log("parent parent" + currentNode.parent.parent.position[0] + "" + currentNode.parent.parent.position[1] + "" + currentNode.parent.parent.position[2] + "" + currentNode.parent.parent.Gcost);
+                Debug.Log("parent parent parent" + currentNode.parent.parent.parent.position[0] + "" + currentNode.parent.parent.parent.position[1] + "" + currentNode.parent.parent.parent.position[2] + "" + currentNode.parent.parent.parent.Gcost);
+                
+
+                
+                Debug.Log("FOUND");
+
+                end = true;
+                break;
+            }
+            else
+            {
+                end = false;
             }
             openset.Remove(currentNode);
-
+            Debug.Log("count" + openset.Count);
             Closed.Add(currentNode);
+
+
+           
             foreach (node neighbour in load.NeighbourNodes(currentNode))
             {
-                
+
                 if (!neighbour.walkable || Closed.Contains(neighbour))
                 {
                     continue;
                 }
                 int MovementcostToNewNeighbour = currentNode.Gcost + GetDistance(currentNode, neighbour);
-                
-                if (MovementcostToNewNeighbour < neighbour.Gcost && !Closed.Contains(neighbour))
+                Debug.Log("number" + MovementcostToNewNeighbour);
+                if (MovementcostToNewNeighbour < neighbour.Gcost || !Closed.Contains(neighbour))
                 {
+                    
                     neighbour.Gcost = MovementcostToNewNeighbour;
                     neighbour.Hcost = GetDistance(neighbour, EndNode);
                     neighbour.parent = currentNode;
                     
-                    if (!Closed.Contains(neighbour))
+                    if (!openset.Contains(neighbour))
                     {
+                        //testlist.Add(neighbour);
+                        //Test = neighbour;
                         openset.Add(neighbour);
-                        
+
                     }
-                        
-                    
-                    
+                    else
+                    {
+                        continue;
+                    }
+
+
+
                 }
-               
+
             }
-            
+
         }
+        
     }
-    public void retracePath(node StartNode, node EndNode)
+    public void retracePath(node StartNode, node currentNode)
     {
-       List<node> Path = new List<node>();
-        node currentnode = EndNode;
-        while (currentnode != StartNode)
+        node PathFindNode = currentNode;
+        while (!(currentNode.position[0] == StartNode.position[0]) || !(currentNode.position[1] == StartNode.position[1]))
         {
-            Path.Add(currentnode);
-            currentnode = currentnode.parent;
+            PathTest.Add(currentNode);
+            currentNode = currentNode.parent;
+
         }
-        Path.Reverse();
-        PathTest = Path;
+        PathTest.Reverse();
+
     }
     int GetDistance(node A, node B)
     {

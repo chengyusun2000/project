@@ -278,3 +278,7 @@ C:\Users\22167\Desktop\Personal Project\obj\Debug\Assembly-CSharp.csproj.CoreCom
 C:\Users\22167\Desktop\Personal Project\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\22167\Desktop\Personal Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\22167\Desktop\Personal Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\22167\Desktop\unity project\tank\project\Personal Project\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\22167\Desktop\unity project\tank\project\Personal Project\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\22167\Desktop\unity project\tank\project\Personal Project\obj\Debug\Assembly-CSharp.dll
+C:\Users\22167\Desktop\unity project\tank\project\Personal Project\obj\Debug\Assembly-CSharp.pdb
