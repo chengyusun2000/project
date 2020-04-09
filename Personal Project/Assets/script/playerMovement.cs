@@ -78,7 +78,7 @@ public class playerMovement : MonoBehaviour
     }
     public void WalkOnPath()
     {
-        if (reach)
+        if (reach&&i<Path.Count)
         {
             NextStep = Path[i];
 

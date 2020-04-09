@@ -18,13 +18,13 @@ public class GetnodeData : MonoBehaviour
     Vector3Int position;
     string types;
     bool walk;
-
+    float weight;
 
     enum TileType
     {
         water,
         grass,
-        desert
+        mountain
     }
     // Start is called before the first frame update
     void Start()
@@ -43,12 +43,21 @@ public class GetnodeData : MonoBehaviour
                     types = TileType.water.ToString();
 
                     walk = false;
+                    weight = 9999;
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
                     types = TileType.grass.ToString();
 
                     walk = true;
+                    weight = 1;
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    types = TileType.mountain.ToString();
+
+                    walk = true;
+                    weight = 1.2f;
                 }
                 else
                 {
@@ -57,7 +66,7 @@ public class GetnodeData : MonoBehaviour
                     
                 }
                 position = vector;
-                CurrentNode = new node(position, walk, types);
+                CurrentNode = new node(position, walk, types,weight);
                 nodes.Add(CurrentNode);
 
             }
@@ -65,10 +74,10 @@ public class GetnodeData : MonoBehaviour
 
 
 
-        for(int i=0;i<=nodes.Count-1;i++)
-        {
-            Debug.Log(nodes[i].position[0]+ "," + nodes[i].position[1] + "," + nodes[i].position[2] + "  " + nodes[i].type + "  " + nodes[i].walkable);
-        }
+        //for(int i=0;i<=nodes.Count-1;i++)
+        //{
+        //    Debug.Log(nodes[i].position[0]+ "," + nodes[i].position[1] + "," + nodes[i].position[2] + "  " + nodes[i].type + "  " + nodes[i].walkable);
+        //}
 
         //vector = new Vector3Int(0 ,0 , 0);
         //Debug.Log("name : " + tilemap.GetTile(vector).name + " & position : " + vector);

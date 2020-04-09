@@ -35,6 +35,10 @@ public class Load : MonoBehaviour
             {
                 tilemap.SetTile(insVector, tiles[1]);
             }
+            else if (nodes[i].type == "mountain")
+            {
+                tilemap.SetTile(insVector, tiles[2]);
+            }
 
 
         }
@@ -72,13 +76,19 @@ public class Load : MonoBehaviour
         if (tilemap.GetTile(vector) == tiles[0])
         {
 
-            node = new node(vector, false, "water");
+            node = new node(vector, false, "water",9999);
             return node;
         }
         else if (tilemap.GetTile(vector) == tiles[1])
         {
 
-            node = new node(vector, true, "grass");
+            node = new node(vector, true, "grass",1);
+            return node;
+        }
+        else if (tilemap.GetTile(vector) == tiles[2])
+        {
+
+            node = new node(vector, true, "mountain", 1.2f);
             return node;
         }
         else
@@ -117,13 +127,19 @@ public class Load : MonoBehaviour
         if (tilemap.GetTile(vector) == tiles[0])
         {
 
-            node = new node(vector, false, "water");
+            node = new node(vector, false, "water",9999);
             return node;
         }
         else if (tilemap.GetTile(vector) == tiles[1])
         {
 
-            node = new node(vector, true, "grass");
+            node = new node(vector, true, "grass",1);
+            return node;
+        }
+        else if (tilemap.GetTile(vector) == tiles[2])
+        {
+
+            node = new node(vector, true, "mountain", 1.2f);
             return node;
         }
         else
@@ -145,15 +161,19 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
                 }
-                
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
+                }
+
                 Debug.Log("even left up");
             }// even left up node
             if ( OriginNode.position[1] + 1 <= sizeOfMap)
@@ -162,12 +182,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("even right up");
             }//even right up node
@@ -177,12 +201,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("even left");
             }//even left node
@@ -192,12 +220,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("even right");
             }//even right node
@@ -207,12 +239,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("even left down");
             }//even left down node
@@ -222,12 +258,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("even right down");
             }//even right down node
@@ -241,13 +281,17 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd left up");
             }//odd left up node
@@ -257,12 +301,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd right up");
             }//odd right up node
@@ -272,12 +320,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd left");
             }//odd left node
@@ -287,12 +339,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd right");
             }//odd right node
@@ -302,12 +358,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd left down");
             }//odd left down node
@@ -317,12 +377,16 @@ public class Load : MonoBehaviour
                 if (tilemap.GetTile(vector) == tiles[0])
                 {
 
-                    NeighboursList.Add(new node(vector, false, "water"));
+                    NeighboursList.Add(new node(vector, false, "water",9999));
 
                 }
                 else if (tilemap.GetTile(vector) == tiles[1])
                 {
-                    NeighboursList.Add(new node(vector, true, "grass"));
+                    NeighboursList.Add(new node(vector, true, "grass",1));
+                }
+                else if (tilemap.GetTile(vector) == tiles[2])
+                {
+                    NeighboursList.Add(new node(vector, true, "mountain", 1.2f));
                 }
                 Debug.Log("odd right down");
             }//odd right down node

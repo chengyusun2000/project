@@ -31,7 +31,7 @@ public class pathfinding : MonoBehaviour
         load = GetComponent<Load>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("Target").transform;
-        newnode = new node(new Vector3Int(0, 1, 0), true, "grass");
+        
         FinDAPath(player.position, target.position);
 
 
@@ -59,6 +59,7 @@ public class pathfinding : MonoBehaviour
         node EndNode = load.GetEndNode(EndPoint);
         StartNode.Gcost = 0;
         StartNode.Hcost = GetDistance(StartNode, EndNode);
+        StartNode.weight = 1;
         openset = new List<node>();
          Closed = new List<node>();
         
@@ -70,18 +71,33 @@ public class pathfinding : MonoBehaviour
            
             for (int i = 1; i <openset.Count; i++)
             {
-               
-                if (openset[i].Fcost < currentNode.Fcost )
-                {
-                    
-                        currentNode = openset[i];
-                    
-                    
-                        
-                    
+                //if (openset[i].position[0]!=EndNode.position[0]&&openset[i].position[1]!=EndNode.position[1]&&openset[i].position[2]!=EndNode.position[2])
+                //{
+                    if (openset[i].Fcost < currentNode.Fcost)
+                    {
 
+                        currentNode = openset[i];
+
+                        
+
+
+
+                    }
+                    else if(openset[i].Fcost == currentNode.Fcost)
+                    {
+                        if(openset[i].weight < currentNode.weight)
+                        {
+                            currentNode = openset[i];
+                        }
+                    }
                 }
-            }
+                //else
+                //{
+                //    currentNode = openset[i];
+                //}
+                    
+                
+            //}
             
             
             
@@ -126,7 +142,7 @@ public class pathfinding : MonoBehaviour
                     continue;
                 }
                 int MovementcostToNewNeighbour = currentNode.Gcost + GetDistance(currentNode, neighbour);
-                Debug.Log("number" + MovementcostToNewNeighbour);
+                //Debug.Log("number" + MovementcostToNewNeighbour);
                 if (MovementcostToNewNeighbour < neighbour.Gcost || !Closed.Contains(neighbour))
                 {
                     
