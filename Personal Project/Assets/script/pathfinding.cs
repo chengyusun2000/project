@@ -32,8 +32,8 @@ public class pathfinding : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("Target").transform;
         newnode = new node(new Vector3Int(0, 1, 0), true, "grass");
-
         FinDAPath(player.position, target.position);
+
 
     }
 
@@ -105,12 +105,12 @@ public class pathfinding : MonoBehaviour
                 
                 Debug.Log("FOUND");
 
-                end = true;
+                
                 break;
             }
             else
             {
-                end = false;
+                
             }
             openset.Remove(currentNode);
             Debug.Log("count" + openset.Count);
@@ -157,6 +157,7 @@ public class pathfinding : MonoBehaviour
     }
     public void retracePath(node StartNode, node currentNode)
     {
+        PathTest = new List<node>();
         node PathFindNode = currentNode;
         while (!(currentNode.position[0] == StartNode.position[0]) || !(currentNode.position[1] == StartNode.position[1]))
         {

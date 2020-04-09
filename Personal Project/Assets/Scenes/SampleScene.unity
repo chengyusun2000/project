@@ -735,14 +735,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145370042}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96798558d512b794db37503b982af646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 10
   rg: {fileID: 1145370043}
   PlayerMove: {x: 0, y: 0}
+  tilemap: {fileID: 1165967314}
+  target: {fileID: 0}
+  playerMapPosition: {x: 0, y: 0, z: 0}
+  PlayerCenterPos: {x: 0, y: 0, z: 0}
+  pathfinding: {fileID: 1165967316}
+  Path: []
+  NextStep:
+    position: 
+    walkable: 0
+    type: 
+    Gcost: 0
+    Hcost: 0
+  timer: 0
+  WaitTime: 10
+  TargetMovement: {x: 0, y: 0, z: 0}
+  Direction: {x: 0, y: 0, z: 0}
+  Percent: 0
+  NextStepVector: {x: 0, y: 0, z: 0}
+  i: 0
 --- !u!61 &1145370045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -756,10 +775,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03988719, y: -0.0682008}
+  m_Offset: {x: -0.0027840734, y: 0.0032238811}
   m_SpriteTilingProperty:
     border: {x: 0.45, y: 0.21, z: 0.53, w: 0.34}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.47077477, y: 0.4462633}
     oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 1.25, y: 1.25}
     adaptiveTilingThreshold: 0.5
@@ -767,7 +786,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2722149, y: 0.7103252}
+  m_Size: {x: 0.27143872, y: 0.70035887}
   m_EdgeRadius: 0
 --- !u!212 &1145370046
 SpriteRenderer:
@@ -827,8 +846,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145370042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.371, y: 0.71, z: 0}
-  m_LocalScale: {x: 1, y: 0.7580086, z: 1}
+  m_LocalPosition: {x: 0.45, y: 0.703, z: 0}
+  m_LocalScale: {x: 1.0075, y: 0.7580086, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -869,7 +888,7 @@ GameObject:
   - component: {fileID: 1165967317}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,6 +1209,25 @@ MonoBehaviour:
   speed: 3
   rg: {fileID: 1274795198}
   PlayerMove: {x: 0, y: 0}
+  tilemap: {fileID: 0}
+  target: {fileID: 0}
+  playerMapPosition: {x: 0, y: 0, z: 0}
+  PlayerCenterPos: {x: 0, y: 0, z: 0}
+  pathfinding: {fileID: 0}
+  Path: []
+  NextStep:
+    position: 
+    walkable: 0
+    type: 
+    Gcost: 0
+    Hcost: 0
+  timer: 0
+  WaitTime: 2
+  TargetMovement: {x: 0, y: 0, z: 0}
+  Direction: {x: 0, y: 0, z: 0}
+  Percent: 0
+  NextStepVector: {x: 0, y: 0, z: 0}
+  i: 0
 --- !u!61 &1274795201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1206,7 +1244,7 @@ BoxCollider2D:
   m_Offset: {x: -0.03988719, y: -0.0682008}
   m_SpriteTilingProperty:
     border: {x: 0.45, y: 0.21, z: 0.53, w: 0.34}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.47077477, y: 0.4462633}
     oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 1.25, y: 1.25}
     adaptiveTilingThreshold: 0.5
@@ -1274,7 +1312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274795197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.717, y: 2.38, z: 0}
+  m_LocalPosition: {x: 4.03, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 0.7580086, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1340,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1513067741
 Grid:
   m_ObjectHideFlags: 0
