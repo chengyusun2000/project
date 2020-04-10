@@ -743,12 +743,14 @@ MonoBehaviour:
   speed: 10
   rg: {fileID: 1145370043}
   PlayerMove: {x: 0, y: 0}
-  tilemap: {fileID: 1165967314}
+  tilemap: {fileID: 1792919991}
   target: {fileID: 0}
   playerMapPosition: {x: 0, y: 0, z: 0}
   PlayerCenterPos: {x: 0, y: 0, z: 0}
   pathfinding: {fileID: 1165967316}
   Path: []
+  PositionsInRange: []
+  Radius: 1
   NextStep:
     position: 
     walkable: 0
@@ -763,6 +765,7 @@ MonoBehaviour:
   Percent: 0
   NextStepVector: {x: 0, y: 0, z: 0}
   i: 0
+  tile: {fileID: 11400000, guid: efa0746e22137b84d80d07546f16f6ea, type: 2}
 --- !u!61 &1145370045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -847,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145370042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.703, z: 0}
+  m_LocalPosition: {x: 0.06, y: 0.05, z: 0}
   m_LocalScale: {x: 1.0075, y: 0.7580086, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -866,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pre: {fileID: 11400000, guid: 8b03d3313f5ed4b41b58576f8e7071f8, type: 2}
-  tilemap: {fileID: 1792919991}
+  tilemap: {fileID: 1165967314}
   vector: {x: 0, y: 0, z: 0}
   weigth: 10
   length: 10
@@ -1194,6 +1197,8 @@ MonoBehaviour:
   PlayerCenterPos: {x: 0, y: 0, z: 0}
   pathfinding: {fileID: 0}
   Path: []
+  PositionsInRange: []
+  Radius: 0
   NextStep:
     position: 
     walkable: 0
@@ -1208,6 +1213,7 @@ MonoBehaviour:
   Percent: 0
   NextStepVector: {x: 0, y: 0, z: 0}
   i: 0
+  tile: {fileID: 0}
 --- !u!61 &1274795201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1314,7 +1320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &1475484282
 Grid:
   m_ObjectHideFlags: 0
@@ -1358,7 +1364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1513067741
 Grid:
   m_ObjectHideFlags: 0
@@ -2531,7 +2537,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792919988}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72807b6cc42f7ca4e8f45f1fb15acddc, type: 3}
   m_Name: 
